@@ -1,0 +1,17 @@
+{
+  "name": "web-sampler-project",
+  "version": "1.0.0",
+  "description": "Full-stack Web Audio sampler with Express backend and dynamic presets",
+  "license": "ISC",
+  "author": "M1 Web Technologies",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "start": "node index.mjs",
+    "dev": "node --watch index.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  }
+}

@@ -1,0 +1,515 @@
+/* ========================================
+   Professional Web Audio Sampler Styles
+   Modern, Clean, Responsive Design
+   ======================================== */
+
+:root {
+    /* Color Palette - Professional Dark Theme */
+    --primary-bg: #1a1a2e;
+    --secondary-bg: #16213e;
+    --accent-bg: #0f3460;
+    --highlight: #e94560;
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --border-color: #2c3e50;
+    
+    /* Pad Colors */
+    --pad-default: #2c3e50;
+    --pad-hover: #34495e;
+    --pad-active: #e94560;
+    --pad-loading: #f39c12;
+    --pad-ready: #2ecc71;
+    
+    /* Spacing */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: var(--spacing-md);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: var(--secondary-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: var(--spacing-lg);
+}
+
+/* ========================================
+   Header Section
+   ======================================== */
+.header {
+    text-align: center;
+    padding: var(--spacing-lg);
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: var(--spacing-lg);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(90deg, var(--highlight), var(--success));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* ========================================
+   Control Panel
+   ======================================== */
+.control-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--accent-bg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.control-group label {
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+/* Form Elements */
+select, input[type="range"] {
+    flex: 1;
+    padding: 0.5rem;
+    background: var(--secondary-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+}
+
+select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: var(--border-color);
+    outline: none;
+    border-radius: 3px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--highlight);
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--highlight);
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: var(--highlight);
+    color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #d63d54;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(233, 69, 96, 0.3);
+}
+
+.btn-secondary {
+    background: var(--accent-bg);
+    color: white;
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: var(--border-color);
+    transform: translateY(-2px);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Status Indicator */
+.status-indicator {
+    font-size: 1.2rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.status-indicator.ready {
+    color: var(--success);
+    animation: none;
+}
+
+.status-indicator.loading {
+    color: var(--warning);
+}
+
+.status-indicator.error {
+    color: var(--highlight);
+}
+
+/* ========================================
+   Sampler Pads Section (4x4 Matrix)
+   ======================================== */
+.sampler-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.sampler-section h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.pad-matrix {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--primary-bg);
+    border-radius: var(--radius-md);
+}
+
+/* Individual Pad Styling */
+.pad {
+    aspect-ratio: 1;
+    background: var(--pad-default);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: var(--spacing-md);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pad:hover:not(.disabled) {
+    background: var(--pad-hover);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.pad:active:not(.disabled) {
+    transform: scale(0.95);
+}
+
+.pad.loading {
+    background: var(--pad-loading);
+    pointer-events: none;
+}
+
+.pad.ready {
+    background: var(--pad-default);
+    border-color: var(--pad-ready);
+}
+
+.pad.playing {
+    background: var(--pad-active);
+    animation: playPulse 0.3s ease-out;
+}
+
+@keyframes playPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.pad.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.pad.selected {
+    border-color: var(--highlight);
+    border-width: 3px;
+}
+
+.pad-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-primary);
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+.pad-index {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.pad-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: var(--success);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* ========================================
+   Waveform Visualizer Section
+   ======================================== */
+.visualizer-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.visualizer-section h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.visualizer-container {
+    background: var(--accent-bg);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+}
+
+.sample-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    background: var(--secondary-bg);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+}
+
+.canvas-wrapper {
+    position: relative;
+    background: #000;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+}
+
+#waveformCanvas {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#trimbarCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: ew-resize;
+}
+
+.trimbar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: var(--secondary-bg);
+    border-radius: var(--radius-sm);
+}
+
+.trim-info {
+    display: flex;
+    gap: var(--spacing-lg);
+    font-size: 0.9rem;
+}
+
+.trim-info label {
+    color: var(--text-secondary);
+}
+
+.trim-info span {
+    color: var(--highlight);
+    font-weight: 600;
+}
+
+/* ========================================
+   Info Section
+   ======================================== */
+.info-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+details {
+    background: var(--accent-bg);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+}
+
+summary {
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: var(--spacing-sm);
+    transition: color 0.3s ease;
+}
+
+summary:hover {
+    color: var(--highlight);
+}
+
+.info-content {
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+    background: var(--secondary-bg);
+    border-radius: var(--radius-sm);
+}
+
+.info-content h3 {
+    color: var(--highlight);
+    margin-bottom: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+}
+
+.info-content h3:first-child {
+    margin-top: 0;
+}
+
+.info-content ul {
+    list-style-position: inside;
+    color: var(--text-secondary);
+}
+
+.info-content li {
+    padding: 0.3rem 0;
+}
+
+.info-content strong {
+    color: var(--text-primary);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+    text-align: center;
+    padding: var(--spacing-lg);
+    border-top: 2px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .pad-matrix {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+    }
+    
+    .control-panel {
+        grid-template-columns: 1fr;
+    }
+    
+    .trim-info {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
+

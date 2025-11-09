@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Web Audio Sampler - M1 Assignment</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>🎹 Professional Web Audio Sampler</h1>
+            <p class="subtitle">Advanced Web Audio API Project with OOP Design Patterns</p>
+        </header>
+
+        <!-- Control Panel -->
+        <section class="control-panel">
+            <div class="control-group">
+                <label for="presetSelector">Select Preset:</label>
+                <select id="presetSelector" disabled>
+                    <option value="">Loading presets...</option>
+                </select>
+                <button id="loadPresetBtn" class="btn btn-primary" disabled>Load Preset</button> -->
+            </div>
+            
+            <div class="control-group">
+                <label for="masterVolume">Master Volume:</label>
+                <input type="range" id="masterVolume" min="0" max="100" value="80" class="slider">
+                <span id="volumeDisplay">80%</span>
+            </div>
+
+            <div class="control-group">
+                <span class="status-indicator" id="statusIndicator">●</span>
+                <span id="loadingStatus">Initializing...</span>
+            </div>
+        </section>
+
+        <!-- Sampler Pads Grid (4x4 matrix like Akai MPC) -->
+        <section class="sampler-section">
+            <h2>Sample Pads</h2>
+            <div id="padMatrix" class="pad-matrix">
+                <!-- Pads will be generated dynamically (4x4 grid = 16 pads) -->
+            </div>
+        </section>
+
+        <!-- Waveform Visualizer Section -->
+        <section class="visualizer-section">
+            <h2>Waveform Editor</h2>
+            <div class="visualizer-container">
+                <div id="sampleInfo" class="sample-info">
+                    <span id="selectedSampleName">No sample selected</span>
+                    <span id="sampleDuration">Duration: --</span>
+                </div>
+                <div class="canvas-wrapper">
+                    <canvas id="waveformCanvas" width="800" height="200"></canvas>
+                    <canvas id="trimbarCanvas" width="800" height="200"></canvas>
+                </div>
+                <div class="trimbar-controls">
+                    <div class="trim-info">
+                        <label>Start: <span id="trimStartTime">0.00s</span></label>
+                        <label>End: <span id="trimEndTime">0.00s</span></label>
+                        <label>Selection: <span id="selectionDuration">0.00s</span></label>
+                    </div>
+                    <button id="resetTrimbarsBtn" class="btn btn-secondary">Reset Trimbars</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-section">
+            <details>
+                <summary>Architecture & Design Patterns</summary>
+                <div class="info-content">
+                    <h3>Object-Oriented Design:</h3>
+                    <ul>
+                        <li><strong>SamplerEngine:</strong> Core audio processing logic (Facade Pattern)</li>
+                        <li><strong>SamplerGUI:</strong> User interface and interaction handling (MVC Pattern)</li>
+                        <li><strong>Sample:</strong> Individual sound sample with state management</li>
+                        <li><strong>WaveformVisualizer:</strong> Canvas-based waveform rendering (Strategy Pattern)</li>
+                        <li><strong>PresetManager:</strong> REST API integration and data management (Singleton Pattern)</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Web Technologies - M1 Assignmenty</p>
+        </footer>
+    </div>
+
+    <!-- Main Application Script (ES6 Module) -->
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
+
